@@ -1,0 +1,55 @@
+﻿@model PracticaMvcCore2SSG.Models.Libro
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<div>
+    <h4>Libro</h4>
+    <hr />
+
+    <img src="~/images/@Model.Portada"  style="max-height:20vh"/>
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Autor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Autor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Editorial)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Editorial)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Resumen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Resumen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+    </dl>
+</div>
+
+ <a asp-action="Details" asp-controller="Libros" asp-route-idlibro="@Model.idLibro" asp-route-idaniadir="@Model.idLibro" class="btn btn-success">Añadir al carrito</a>
+
+
+

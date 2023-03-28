@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Libro>
+
+@{
+    ViewData["Title"] = "Carrito";
+}
+
+<h1>Carrito</h1>
+
+@if (Model != null)
+{
+    <div style="display:flex;flex-wrap: wrap;">
+    @foreach (var item in Model)
+    {
+        <div>
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/images/@item.Portada" alt="Card image cap">
+                <div class="card-body">
+                    <a asp-action="Details" asp-controller="Libros" asp-route-idlibro="@item.idLibro" class="btn btn-primary">Detalles</a>
+                    <a asp-action="Carrito" asp-controller="Libros" asp-route-ideliminar="@item.idLibro" class="btn btn-danger">Quitar del carrito</a>
+                </div>
+            </div>
+
+        </div>
+    }
+    </div>
+
+    <a asp-action="Index" asp-controller="Libros">Seguir comprando</a> <p> | </p> 
+    <a asp-action="Pedidos" asp-controller="Libros">Finalizar Compra</a>
+}
+else
+{
+    <h3>@ViewData["MENSAJE"]</h3>
+}
+
+

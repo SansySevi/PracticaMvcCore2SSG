@@ -1,0 +1,48 @@
+﻿@model List<Libro>
+
+@{
+    int numeroregistros = (int)ViewData["REGISTROS"];
+    int numeropagina = 1;
+}
+
+<div class="container">
+    @if (Model.Count > 0)
+    {
+        @if (numeroregistros > 6)
+        {
+             <ul class="list-group list-group-horizontal" style="display: flex;justify-content: flex-end;">
+            @for (int i = 1; i <= numeroregistros; i += 6)
+            {
+                <li class="list-group-item list-group-item-dark">
+                    <a asp-controller="Libros"
+               asp-action="Index"
+               asp-route-posicion="@i">
+                        @numeropagina
+                    </a>
+                </li>
+                numeropagina += 1;
+            }
+        </ul>
+        <br />
+        }
+       
+
+        <div style="display:flex;flex-wrap: wrap;">
+            @foreach (Libro item in Model)
+        {
+            <div >
+
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/images/@item.Portada" alt="Card image cap">
+                    <div class="card-body">
+                        <a asp-controller="Libros" asp-action="Details" asp-route-idlibro="@item.idLibro" ><h5 class="card-title">@item.Titulo</h5></a>
+                    </div>
+                </div>
+
+            </div>
+        }
+            </div>
+        
+    }
+</div>
+

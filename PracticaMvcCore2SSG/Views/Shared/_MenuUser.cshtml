@@ -1,0 +1,16 @@
+﻿
+@if(Context.User.Identity.IsAuthenticated == false){
+
+}else{
+    <li  class="nav-item">
+        <img src="~/images/@Context.User.FindFirstValue("Imagen")" style="max-height:110px" />
+    </li>
+    
+    <li  class="nav-item">Hola @Context.User.Identity.Name</li>
+    <li class="nav-item">
+        <a asp-action="Perfil" asp-controller="Libros" class="nav-link text-danger">Perfil</a>
+    </li>
+    <li class="nav-item">
+        <a asp-action="Logout" asp-controller="Libros" class="nav-link text-danger">Cerrar Sesión</a>
+    </li>
+}
